@@ -10,6 +10,9 @@ dotenv.config({ path: './config/config.env' });
 // Connect to database
 connectDb();
 
+// Body Parser (acess to req.body)
+app.use(express.json());
+
 // Route Files
 const games = require('./routes/games');
 
