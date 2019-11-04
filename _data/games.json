@@ -2,7 +2,7 @@
   {
     "_id": "5d725a4a7b292f5f8ceff789",
     "title": "Megaman X",
-    "description": "Mega Man X (after X4 stylized as Megaman X), known in Japan as Rockman X (ロックマンX Rokkuman X), is a Mega Man series of action platform video games released by Capcom. It was initially released on December 17, 1993 in Japan (January 1994 in North America) on the Super NES/Super Famicom and spawned sequels on several systems, most of which were later ported to the PC platform. The plot is a continuation of the preceding series, Mega Man. The game play introduced new elements to the Mega Man franchise including the ability to dash and climb walls.[1] The first six games in the series were compiled in the anthology Mega Man X Collection.",
+    "description": "Mega Man X (after X4 stylized as Megaman X), known in Japan as Rockman X (ロックマンX Rokkuman X).",
     "genre": ["plataform", "action"],
     "plataform": ["SNES", "PSX", "PS2"],
     "publisher": "Capcom",
@@ -13,9 +13,9 @@
   {
     "_id": "5d713a66ec8f2b88b8f830b8",
     "title": "Megaman X2",
-    "description": "Mega Man X (after X4 stylized as Megaman X), known in Japan as Rockman X (ロックマンX Rokkuman X), is a Mega Man series of action platform video games released by Capcom. It was initially released on December 17, 1993 in Japan (January 1994 in North America) on the Super NES/Super Famicom and spawned sequels on several systems, most of which were later ported to the PC platform. The plot is a continuation of the preceding series, Mega Man. The game play introduced new elements to the Mega Man franchise including the ability to dash and climb walls.[1] The first six games in the series were compiled in the anthology Mega Man X Collection.",
+    "description": "Mega Man X (after X4 stylized as Megaman X), known in Japan as Rockman X (ロックマンX Rokkuman X)",
     "genre": ["plataform", "action"],
-    "plataform": ["Snes", "PSX", "PS2"],
+    "plataform": ["SNES", "PSX", "PS2"],
     "publisher": "Capcom",
     "developer": ["Capcom"],
     "initialrelease": "1994-10-19",
@@ -24,7 +24,7 @@
   {
     "_id": "5d725a1b7b292f5f8ceff788",
     "title": "Persona 4",
-    "description": "Persona 4 is a role-playing video game developed and published by Atlus for the PlayStation 2, and chronologically the fifth installment in the Persona series, itself a part of the larger Megami Tensei franchise. The game was released in Japan in July 2008, North America in December 2008, and Europe in March 2009. Persona 4 takes place in a fictional Japanese countryside and is indirectly related to earlier Persona games. The player-named protagonist is a high-school student who moved into the countryside from the city for a year. During his year-long stay, he becomes involved in investigating mysterious murders while harnessing the power of summoning Persona. The game features a weather forecast system with events happening on foggy days to replace the moon phase system implemented in the previous games. ",
+    "description": "Persona 4 is a role-playing video game developed and published by Atlus for the PlayStation 2, and chronologically the fifth installment in the Persona series",
     "genre": ["jrpg", "rpg"],
     "plataform": ["PS2", "PSVITA"],
     "publisher": "Atlus",
@@ -35,7 +35,7 @@
   {
     "_id": "5d725a037b292f5f8ceff787",
     "title": "Persona 5",
-    "description": "Persona 5 is a role-playing video game developed by Atlus. The game is chronologically the sixth installment in the Persona series, which is part of the larger Megami Tensei franchise. It was released for the PlayStation 3 and PlayStation 4 in Japan in September 2016 and worldwide in April 2017, where it was published by Atlus in Japan and North America and by Deep Silver in Europe and Australia. An expanded version featuring new and altered content, Persona 5 Royal, was released in Japan in October 2019 and will be released worldwide in 2020. ",
+    "description": "Persona 5 is a role-playing video game developed by Atlus.",
     "genre": ["jrpg", "rpg"],
     "plataform": ["PS3", "PS4"],
     "publisher": "Atlus",

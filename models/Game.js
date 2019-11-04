@@ -31,7 +31,7 @@ const GameSchema = new mongoose.Schema({
   plataform: {
     type: [String],
     required: true,
-    enum: ['']
+    enum: ['PSX', 'PS2', 'PS3', 'PS4', 'PSVITA', 'SNES', 'NES', 'SWITCH']
   },
   publisher: {
     type: String,

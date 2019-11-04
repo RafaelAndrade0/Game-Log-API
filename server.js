@@ -1,10 +1,14 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const connectDb = require('./config/db');
 
 const app = express();
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
+
+// Connect to database
+connectDb();
 
 // Route Files
 const games = require('./routes/games');
