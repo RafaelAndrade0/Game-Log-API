@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDb = require('./config/db');
 const colors = require('colors');
+const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
 
@@ -19,6 +20,9 @@ const games = require('./routes/games');
 
 // Mount Routes
 app.use('/api/v1/games', games);
+
+// Error Handler Middleware
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
