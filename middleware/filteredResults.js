@@ -1,6 +1,6 @@
 const querystring = require('querystring');
 
-const filteredResults = Model => async (req, res, next) => {
+const filteredResults = (Model, populate) => async (req, res, next) => {
   let query;
   let page = parseInt(req.query.page, 10) || 1;
   let limit = parseInt(req.query.limit, 10) || 5;
@@ -31,6 +31,11 @@ const filteredResults = Model => async (req, res, next) => {
 
   // Pagination
   query.skip(limit * page - limit).limit(limit);
+
+  // Referencing documents in others collections
+  if (populate) {
+    query.populate(populate);
+  }
 
   const games = await query;
 

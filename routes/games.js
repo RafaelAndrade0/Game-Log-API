@@ -18,7 +18,13 @@ const {
 
 router
   .route('/')
-  .get(filteredResults(Game), getGames)
+  .get(
+    filteredResults(Game, {
+      path: 'developer',
+      select: 'name description headquarters website'
+    }),
+    getGames
+  )
   .post(addGame);
 
 router
