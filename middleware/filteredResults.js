@@ -3,7 +3,7 @@ const querystring = require('querystring');
 const filteredResults = Model => async (req, res, next) => {
   let query;
   let page = parseInt(req.query.page, 10) || 1;
-  let limit = parseInt(req.query.limit, 10) || 2;
+  let limit = parseInt(req.query.limit, 10) || 5;
 
   const reqQuery = { ...req.query };
 

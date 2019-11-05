@@ -18,12 +18,14 @@ app.use(express.json());
 
 // Route Files
 const games = require('./routes/games');
+const developers = require('./routes/developers');
 
 // Morgan Middleware
 app.use(morgan('dev'));
 
 // Mount Routes
 app.use('/api/v1/games', games);
+app.use('/api/v1/developers', developers);
 
 // Error Handler Middleware
 app.use(errorHandler);
