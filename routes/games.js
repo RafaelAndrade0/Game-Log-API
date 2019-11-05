@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+// Midlewares
+const filteredResults = require('../middleware/filteredResults');
+
+// Models
+const Game = require('../models/Game');
+
 // Load Controllers
 const {
   getGames,
@@ -12,7 +18,7 @@ const {
 
 router
   .route('/')
-  .get(getGames)
+  .get(filteredResults(Game), getGames)
   .post(addGame);
 
 router
