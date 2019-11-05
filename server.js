@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDb = require('./config/db');
 const colors = require('colors');
+const morgan = require('morgan');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
@@ -17,6 +18,9 @@ app.use(express.json());
 
 // Route Files
 const games = require('./routes/games');
+
+// Morgan Middleware
+app.use(morgan('dev'));
 
 // Mount Routes
 app.use('/api/v1/games', games);

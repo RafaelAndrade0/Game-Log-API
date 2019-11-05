@@ -5,7 +5,34 @@ const asyncHandler = require('../middleware/asyncHandler');
 // @route GET api/v1/games
 // @access Public
 exports.getGames = asyncHandler(async (req, res, next) => {
-  const games = await Game.find();
+  let query;
+
+  const reqQuery = { ...req.query };
+
+  // Fields to exclude
+  const removeFields = ['select', 'sort'];
+
+  // Loop reqQuery and delete them from reqQuery
+  removeFields.forEach(field => delete reqQuery[field]);
+
+  query = Game.find(reqQuery);
+
+  // Select Field (Filter Results)
+  if (req.query.select) {
+    const fieldsToShow = req.query.select.split(',');
+    query.select(fieldsToShow);
+  }
+
+  // Sort Field (Sort Results)
+  if (req.query.sort) {
+    const fieldsToSort = req.query.sort.split(',').join(' ');
+    query.sort(fieldsToSort);
+  } else {
+    query.sort('title');
+  }
+
+  const games = await query;
+
   res.status(200).json({ success: true, count: games.length, data: games });
 });
 
