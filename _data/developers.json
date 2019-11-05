@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "5d725a4a7b292f5f8ceff789",
+    "name": "Atlus",
+    "description": "Atlus é uma desenvolvedora e publicadora japonesa de Video games. É conhecida por desenvolver o RPG Shin Megami Tensei que, contando os jogos não-canônicos, possui dúzias de jogos.",
+    "foundation": "1986-04-07",
+    "headquarters": "Minato, Tóquio, Japão",
+    "website": "http://p-atlus.jp/"
+  },
+  {
+    "_id": "5d725c84c4ded7bcb480eaa0",
+    "name": "Capcom",
+    "description": "Capcom Co., Ltd. é uma desenvolvedora e publicadora japonesa de jogos eletrônicos sediada em Osaka. Ela é conhecida por ter criado franquias multimilionárias, tais como Resident Evil, Street Fighter, Mega-Man, Devil May Cry, Dino Crisis e Onimusha.",
+    "foundation": "1979-05-30",
+    "headquarters": "Osaka, Japão",
+    "website": "http://capcom.jp/"
+  },
+  {
+    "_id": "5d725cb9c4ded7bcb480eaa1",
+    "name": "Ubisoft",
+    "description": "A Ubisoft Entertainment SA, anteriormente chamada de Ubi Soft, é uma desenvolvedora e publicadora francesa de jogos eletrônicos sediada em Montreuil, Ilha de França",
+    "foundation": "1986-03-12",
+    "headquarters": "Centoir, França",
+    "website": "http://ubisoft.com/"
+  },
+  {
+    "_id": "5d725cd2c4ded7bcb480eaa2",
+    "name": "Square Enix",
+    "description": "A Square Enix Holdings Co., Ltd. é uma desenvolvedora e publicadora japonesa de jogos eletrônicos sediada em Tóquio. Ela é mais conhecida por suas franquias de RPGs eletrônicos, que incluem Final Fantasy, Dragon Quest e Kingdom Hearts",
+    "foundation": "2003-04-07",
+    "headquarters": "Shibuya, Tóquio, Japão",
+    "website": "http://square-enix.jp/"
+  },
+  {
+    "_id": "5d725ce8c4ded7bcb480eaa3",
+    "name": "Nintendo",
+    "description": "A Nintendo Co. Ltd. é uma desenvolvedora e publicadora japonesa de jogos eletrônicos sediada em Quioto, Quioto. Foi fundada em setembro de 1889 pelo artesão Fusajiro Yamauchi e originalmente era uma produtora de hanafudas, cartas de jogo tradicionais japonesas.",
+    "foundation": "1889-08-23",
+    "headquarters": "Washigton, EUA",
+    "website": "http://nintendo.com/"
+  }
+]

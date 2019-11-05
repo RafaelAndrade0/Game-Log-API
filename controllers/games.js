@@ -3,6 +3,7 @@ const asyncHandler = require('../middleware/asyncHandler');
 
 // @desc  Get All Games
 // @route GET api/v1/games
+// @route GET api/v1/developers/:developerId/games
 // @access Public
 exports.getGames = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.filteredResults);

@@ -5,8 +5,7 @@
     "description": "Mega Man X (after X4 stylized as Megaman X), known in Japan as Rockman X (ロックマンX Rokkuman X).",
     "genre": ["plataform", "action"],
     "plataform": ["SNES", "PSX", "PS2"],
-    "publisher": "Capcom",
-    "developer": ["Capcom"],
+    "developer": "5d725c84c4ded7bcb480eaa0",
     "initialrelease": "1992-10-19",
     "user": "5d7a514b5d2c12c7449be045"
   },
@@ -16,8 +15,7 @@
     "description": "Mega Man X (after X4 stylized as Megaman X), known in Japan as Rockman X (ロックマンX Rokkuman X)",
     "genre": ["plataform", "action"],
     "plataform": ["SNES", "PSX", "PS2"],
-    "publisher": "Capcom",
-    "developer": ["Capcom"],
+    "developer": "5d725c84c4ded7bcb480eaa0",
     "initialrelease": "1994-10-19",
     "user": "5d7a514b5d2c12c7449be046"
   },
@@ -27,8 +25,7 @@
     "description": "Persona 4 is a role-playing video game developed and published by Atlus for the PlayStation 2, and chronologically the fifth installment in the Persona series",
     "genre": ["jrpg", "rpg"],
     "plataform": ["PS2", "PSVITA"],
-    "publisher": "Atlus",
-    "developer": ["Atlus"],
+    "developer": "5d725a4a7b292f5f8ceff789",
     "initialrelease": "2009-10-19",
     "user": "5c8a1d5b0190b214360dc031"
   },
@@ -38,8 +35,7 @@
     "description": "Persona 5 is a role-playing video game developed by Atlus.",
     "genre": ["jrpg", "rpg"],
     "plataform": ["PS3", "PS4"],
-    "publisher": "Atlus",
-    "developer": ["Atlus"],
+    "developer": "5d725a4a7b292f5f8ceff789",
     "initialrelease": "2016-10-19",
     "user": "5c8a1d5b0190b214360dc032"
   }
