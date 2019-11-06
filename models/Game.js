@@ -33,13 +33,15 @@ const GameSchema = new mongoose.Schema({
     required: true,
     enum: ['PSX', 'PS2', 'PS3', 'PS4', 'PSVITA', 'SNES', 'NES', 'SWITCH']
   },
-  developer: [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Developer',
-      required: true
-    }
-  ],
+  developer: {
+    type: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Developer'
+      }
+    ],
+    validate: [arrayLimit, 'Add at least a developer']
+  },
   initialrelease: {
     type: Date,
     required: true
@@ -54,5 +56,9 @@ const GameSchema = new mongoose.Schema({
     required: true
   }
 });
+
+function arrayLimit(val) {
+  return val.length > 0;
+}
 
 module.exports = mongoose.model('Game', GameSchema);

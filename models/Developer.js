@@ -27,22 +27,18 @@ const DeveloperSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please add a website']
     },
-    games: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Game',
-        required: true
-      }
-    ],
+    games: {
+      type: [{ type: mongoose.Schema.ObjectId, ref: 'Game' }]
+    },
     createdAt: {
       type: Date,
       default: Date.now
     }
-  },
-  {
-    // toJSON: { virtuals: true },
-    // toObject: { virtuals: true }
   }
+  // {
+  //   toJSON: { virtuals: true },
+  //   toObject: { virtuals: true }
+  // }
 );
 
 // DeveloperSchema.virtual('games', {
