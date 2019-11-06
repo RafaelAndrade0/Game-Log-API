@@ -7,6 +7,9 @@ const filteredResults = require('../middleware/filteredResults');
 // Models
 const Game = require('../models/Game');
 
+// Include others resource routes
+const reviewsRouter = require('../routes/reviews');
+
 // Load Controllers
 const {
   getGames,
@@ -16,6 +19,9 @@ const {
   updateGame,
   gamePhotoUpload
 } = require('../controllers/games');
+
+// Redirect to reviews router
+router.use('/:gameId/reviews', reviewsRouter);
 
 router
   .route('/')

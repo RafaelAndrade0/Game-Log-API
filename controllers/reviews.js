@@ -6,7 +6,12 @@ const asyncHandler = require('../middleware/asyncHandler');
 // @route GET api/v1/games/:gameId/reviews
 // @access Public
 exports.getReviews = asyncHandler(async (req, res, next) => {
-  res.status(200).json(res.filteredResults);
+  if (req.params.gameId) {
+    const reviews = await Review.find({ game: req.params.gameId });
+    res.status(200).json({ success: true, data: reviews });
+  } else {
+    res.status(200).json(res.filteredResults);
+  }
 });
 
 // @desc  Add a Review
