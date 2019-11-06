@@ -5,6 +5,7 @@
     "description": "Atlus é uma desenvolvedora e publicadora japonesa de Video games. É conhecida por desenvolver o RPG Shin Megami Tensei que, contando os jogos não-canônicos, possui dúzias de jogos.",
     "foundation": "1986-04-07",
     "headquarters": "Minato, Tóquio, Japão",
+    "games": ["5d725a1b7b292f5f8ceff788", "5d725a037b292f5f8ceff787"],
     "website": "http://p-atlus.jp/"
   },
   {
@@ -13,6 +14,7 @@
     "description": "Capcom Co., Ltd. é uma desenvolvedora e publicadora japonesa de jogos eletrônicos sediada em Osaka. Ela é conhecida por ter criado franquias multimilionárias, tais como Resident Evil, Street Fighter, Mega-Man, Devil May Cry, Dino Crisis e Onimusha.",
     "foundation": "1979-05-30",
     "headquarters": "Osaka, Japão",
+    "games": ["5d725a4a7b292f5f8ceff789", "5d713a66ec8f2b88b8f830b8"],
     "website": "http://capcom.jp/"
   },
   {
