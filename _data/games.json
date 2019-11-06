@@ -35,7 +35,7 @@
     "description": "Persona 5 is a role-playing video game developed by Atlus.",
     "genre": ["jrpg", "rpg"],
     "plataform": ["PS3", "PS4"],
-    "developer": "5d725a4a7b292f5f8ceff789",
+    "developer": ["5d725a4a7b292f5f8ceff789", "5d725cb9c4ded7bcb480eaa1"],
     "initialrelease": "2016-10-19",
     "user": "5c8a1d5b0190b214360dc032"
   }

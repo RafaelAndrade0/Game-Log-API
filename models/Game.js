@@ -33,11 +33,13 @@ const GameSchema = new mongoose.Schema({
     required: true,
     enum: ['PSX', 'PS2', 'PS3', 'PS4', 'PSVITA', 'SNES', 'NES', 'SWITCH']
   },
-  developer: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Developer',
-    required: true
-  },
+  developer: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Developer',
+      required: true
+    }
+  ],
   initialrelease: {
     type: Date,
     required: true

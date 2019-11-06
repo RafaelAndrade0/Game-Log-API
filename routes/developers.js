@@ -20,7 +20,7 @@ router
   .get(
     filteredResults(Developer, {
       path: 'games',
-      select: 'title description '
+      select: 'title description -_id'
     }),
     getDevelopers
   )
