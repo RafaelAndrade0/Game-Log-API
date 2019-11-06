@@ -27,25 +27,25 @@ const DeveloperSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please add a website']
     },
-    games: {
-      type: [{ type: mongoose.Schema.ObjectId, ref: 'Game' }]
-    },
+    // games: {
+    //   type: [{ type: mongoose.Schema.ObjectId, ref: 'Game' }]
+    // },
     createdAt: {
       type: Date,
       default: Date.now
     }
+  },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
   }
-  // {
-  //   toJSON: { virtuals: true },
-  //   toObject: { virtuals: true }
-  // }
 );
 
-// DeveloperSchema.virtual('games', {
-//   ref: 'Game',
-//   localField: '_id',
-//   foreignField: 'developer',
-//   justOne: false
-// });
+DeveloperSchema.virtual('games', {
+  ref: 'Game',
+  localField: '_id',
+  foreignField: 'developer',
+  justOne: false
+});
 
 module.exports = mongoose.model('Developer', DeveloperSchema);

@@ -13,7 +13,8 @@ const {
   addGame,
   getGame,
   deleteGame,
-  updateGame
+  updateGame,
+  gamePhotoUpload
 } = require('../controllers/games');
 
 router
@@ -32,5 +33,7 @@ router
   .get(getGame)
   .put(updateGame)
   .delete(deleteGame);
+
+router.route('/:id/photo').put(gamePhotoUpload);
 
 module.exports = router;
