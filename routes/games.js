@@ -20,12 +20,19 @@ const {
 router
   .route('/')
   .get(
-    filteredResults(Game, {
-      path: 'developer',
-      select: 'name description headquarters website'
-    }),
+    filteredResults(Game, [
+      { path: 'developer', select: 'name description headquarters website' },
+      { path: 'reviews' }
+    ]),
     getGames
   )
+  // .get(
+  //   filteredResults(Game, {
+  //     path: 'developer',
+  //     select: 'name description headquarters website'
+  //   }),
+  //   getGames
+  // )
   .post(addGame);
 
 router

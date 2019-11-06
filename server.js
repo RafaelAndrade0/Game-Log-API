@@ -21,6 +21,7 @@ app.use(express.json());
 // Route Files
 const games = require('./routes/games');
 const developers = require('./routes/developers');
+const reviews = require('./routes/reviews');
 
 // Morgan Middleware
 app.use(morgan('dev'));
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Mount Routes
 app.use('/api/v1/games', games);
 app.use('/api/v1/developers', developers);
+app.use('/api/v1/reviews', reviews);
 
 // Error Handler Middleware
 app.use(errorHandler);

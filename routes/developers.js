@@ -18,10 +18,12 @@ const {
 router
   .route('/')
   .get(
-    filteredResults(Developer, {
-      path: 'games',
-      select: 'title description -_id'
-    }),
+    filteredResults(Developer, [
+      {
+        path: 'games',
+        select: 'title description -_id'
+      }
+    ]),
     getDevelopers
   )
   .post(addDeveloper);

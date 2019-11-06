@@ -34,7 +34,8 @@ const filteredResults = (Model, populate) => async (req, res, next) => {
 
   // Referencing documents in others collections
   if (populate) {
-    query.populate(populate);
+    populate.forEach(p => query.populate(p));
+    // query.populate(populate);
   }
 
   const games = await query;
