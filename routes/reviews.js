@@ -8,7 +8,12 @@ const Review = require('../models/Review');
 const filteredResults = require('../middleware/filteredResults');
 
 // Load Controllers
-const { getReviews, addReview } = require('../controllers/reviews');
+const {
+  getReviews,
+  addReview,
+  getReview,
+  deleteReview
+} = require('../controllers/reviews');
 
 router
   .route('/')
@@ -22,5 +27,10 @@ router
     getReviews
   )
   .post(addReview);
+
+router
+  .route('/:id')
+  .get(getReview)
+  .delete(deleteReview);
 
 module.exports = router;
