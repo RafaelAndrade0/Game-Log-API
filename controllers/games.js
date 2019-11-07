@@ -2,6 +2,7 @@ const Game = require('../models/Game');
 const asyncHandler = require('../middleware/asyncHandler');
 
 const path = require('path');
+const ErrorResponse = require('../utils/errorResponse');
 
 // @desc  Get All Games
 // @route GET api/v1/games
@@ -17,7 +18,7 @@ exports.getGames = asyncHandler(async (req, res, next) => {
 exports.getGame = asyncHandler(async (req, res, next) => {
   const game = await Game.findById(req.params.id);
   if (!game) {
-    res.status(404).json({ success: false });
+    return next(new ErrorResponse('Resource Not Found', 404));
   }
   res.status(200).json({
     success: true,
@@ -43,7 +44,7 @@ exports.updateGame = asyncHandler(async (req, res, next) => {
   });
 
   if (!game) {
-    res.status(404).json({ success: false });
+    return next(new ErrorResponse('Resource Not Found', 404));
   }
   res.status(200).json({ success: true, data: game });
 });
@@ -54,7 +55,7 @@ exports.updateGame = asyncHandler(async (req, res, next) => {
 exports.deleteGame = asyncHandler(async (req, res, next) => {
   const game = await Game.findByIdAndDelete(req.params.id);
   if (!game) {
-    res.status(404).json({ success: false });
+    return next(new ErrorResponse('Resource Not Found', 404));
   }
   res.status(200).json({ success: true, data: {} });
 });
@@ -66,20 +67,18 @@ exports.gamePhotoUpload = asyncHandler(async (req, res, next) => {
   const game = await Game.findById(req.params.id);
 
   if (!game) {
-    res.status(404).json({ success: false });
+    return next(new ErrorResponse('Resource Not Found', 404));
   }
 
   if (!req.files) {
-    res.status(400).json({ success: false, message: 'Please Add a Photo!' });
+    return next(new ErrorResponse('Please Upload a File', 400));
   }
 
   const file = req.files.file;
 
   // Make sure that the file is an image
   if (!file.mimetype.startsWith('image')) {
-    res
-      .status(400)
-      .json({ success: false, message: 'Please upload an image!' });
+    return next(new ErrorResponse('Please Upload an Image', 400));
   }
 
   file.name = `photo_${game._id}${path.parse(file.name).ext}`;
@@ -87,9 +86,7 @@ exports.gamePhotoUpload = asyncHandler(async (req, res, next) => {
   file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async err => {
     if (err) {
       console.log(err);
-      res
-        .status(500)
-        .json({ success: false, message: 'Problem with photo upload!' });
+      return next(new ErrorResponse(`Problem with file upload`, 500));
     }
 
     await Game.findByIdAndUpdate(req.params.id, { photo: file.name });

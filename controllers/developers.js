@@ -14,7 +14,7 @@ exports.getDevelopers = asyncHandler(async (req, res, next) => {
 exports.getDeveloper = asyncHandler(async (req, res, next) => {
   const developer = await Developer.findById(req.params.id);
   if (!developer) {
-    res.status(404).json({ success: false });
+    return next(new ErrorResponse('Resource Not Found', 404));
   }
   res.status(200).json({
     success: true,
@@ -40,7 +40,7 @@ exports.updateDeveloper = asyncHandler(async (req, res, next) => {
   });
 
   if (!developer) {
-    res.status(404).json({ success: false });
+    return next(new ErrorResponse('Resource Not Found', 404));
   }
   res.status(200).json({ success: true, data: developer });
 });
@@ -51,7 +51,7 @@ exports.updateDeveloper = asyncHandler(async (req, res, next) => {
 exports.deleteDeveloper = asyncHandler(async (req, res, next) => {
   const developer = await Developer.findByIdAndDelete(req.params.id);
   if (!developer) {
-    res.status(404).json({ success: false });
+    return next(new ErrorResponse('Resource Not Found', 404));
   }
   res.status(200).json({ success: true, data: {} });
 });

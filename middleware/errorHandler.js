@@ -1,30 +1,34 @@
 const colors = require('colors');
 
-const errorHandler = (error, req, res, next) => {
-  console.log(colors.bgRed(error.stack));
+const errorHandler = (err, req, res, next) => {
+  console.log(colors.bgRed(err.stack));
 
-  let statusCode = 500;
-  let message = 'Generic Error';
+  let error = { ...err };
 
-  // Resource Not Found
-  if (error.name === 'CastError') {
-    statusCode = 404;
-    message = 'Resource Not Found';
+  error.message = err.message;
+
+  // Mongoose bad Object Id
+  if (err.name === 'CastError') {
+    const message = `Resource not found`;
+    error = new ErrorResponse(message, 404);
   }
 
-  // Mongoose Duplicated Field
-  if (error.code === 11000) {
-    statusCode = 400;
-    message = 'Duplicate field value entered';
+  // Mongoose Duplicated Key
+  if (err.code === 11000) {
+    const message = `Duplicate field value entered`;
+    error = new ErrorResponse(message, 400);
   }
 
   // Mongoose Validation Error
-  if (error.name === 'ValidationError') {
-    statusCode = 400;
-    message = Object.values(error.errors).map(val => val.message);
+  if (err.name === 'ValidationError') {
+    const message = Object.values(err.errors).map(val => val.message);
+    error = new ErrorResponse(message, 400);
   }
 
-  return res.status(statusCode).json({ success: false, message });
+  res.status(error.statusCode || 500).json({
+    success: false,
+    error: error.message || 'Server Error'
+  });
 };
 
 module.exports = errorHandler;
