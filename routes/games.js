@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Midlewares
 const filteredResults = require('../middleware/filteredResults');
+const { protect } = require('../middleware/auth');
 
 // Models
 const Game = require('../models/Game');
@@ -32,20 +33,13 @@ router
     ]),
     getGames
   )
-  // .get(
-  //   filteredResults(Game, {
-  //     path: 'developer',
-  //     select: 'name description headquarters website'
-  //   }),
-  //   getGames
-  // )
-  .post(addGame);
+  .post(protect, addGame);
 
 router
   .route('/:id')
   .get(getGame)
-  .put(updateGame)
-  .delete(deleteGame);
+  .put(protect, updateGame)
+  .delete(protect, deleteGame);
 
 router.route('/:id/photo').put(gamePhotoUpload);
 

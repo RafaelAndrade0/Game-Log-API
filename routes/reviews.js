@@ -6,6 +6,7 @@ const Review = require('../models/Review');
 
 // Midlewares
 const filteredResults = require('../middleware/filteredResults');
+const { protect } = require('../middleware/auth');
 
 // Load Controllers
 const {
@@ -31,6 +32,6 @@ router
 router
   .route('/:id')
   .get(getReview)
-  .delete(deleteReview);
+  .delete(protect, deleteReview);
 
 module.exports = router;

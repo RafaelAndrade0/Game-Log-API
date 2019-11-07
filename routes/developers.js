@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Midlewares
 const filteredResults = require('../middleware/filteredResults');
+const { protect } = require('../middleware/auth');
 
 // Models
 const Developer = require('../models/Developer');
@@ -26,12 +27,12 @@ router
     ]),
     getDevelopers
   )
-  .post(addDeveloper);
+  .post(protect, addDeveloper);
 
 router
   .route('/:id')
   .get(getDeveloper)
-  .put(updateDeveloper)
-  .delete(deleteDeveloper);
+  .put(protect, updateDeveloper)
+  .delete(protect, deleteDeveloper);
 
 module.exports = router;
