@@ -41,11 +41,13 @@ exports.getReview = asyncHandler(async (req, res, next) => {
 // @route DELETE api/v1/review/:id
 // @access Private
 exports.deleteReview = asyncHandler(async (req, res, next) => {
-  const review = await Review.findByIdAndDelete(req.params.id);
+  const review = await Review.findById(req.params.id);
 
   if (!review) {
     return next(new ErrorResponse('Resource Not Found', 404));
   }
+
+  await review.remove();
 
   res.status(200).json({ success: true, data: {} });
 });

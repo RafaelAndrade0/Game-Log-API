@@ -1,4 +1,5 @@
 const colors = require('colors');
+const ErrorResponse = require('../utils/errorResponse');
 
 const errorHandler = (err, req, res, next) => {
   console.log(colors.bgRed(err.stack));

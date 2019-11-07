@@ -24,7 +24,7 @@ const GameSchema = new mongoose.Schema(
       type: String,
       default: 'no-photo.jpg'
     },
-    averageRating: {
+    averageScore: {
       type: Number,
       min: [1, 'Rating must be at least 1'],
       max: [10, 'Rating must can not be more than 10']

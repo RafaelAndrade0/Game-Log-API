@@ -26,4 +26,35 @@ const ReviewSchema = new mongoose.Schema({
   }
 });
 
+ReviewSchema.statics.getAverageScore = async function(gameId) {
+  const obj = await this.aggregate([
+    { $match: { game: gameId } },
+    {
+      $group: {
+        _id: '$game',
+        averageScore: { $avg: '$score' }
+      }
+    }
+  ]);
+
+  try {
+    // console.log(obj[0].averageScore);
+    await this.model('Game').findByIdAndUpdate(gameId, {
+      averageScore: obj[0].averageScore
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Call After Saving a Review
+ReviewSchema.post('save', function() {
+  this.constructor.getAverageScore(this.game);
+});
+
+// Call getAverageRating() before remove
+ReviewSchema.pre('remove', function() {
+  this.constructor.getAverageScore(this.game);
+});
+
 module.exports = mongoose.model('Review', ReviewSchema);
