@@ -1,5 +1,6 @@
 const asyncHandler = require('../middleware/asyncHandler');
 const Developer = require('../models/Developer');
+const ErrorResponse = require('../utils/errorResponse');
 
 // @desc  Get All Developers
 // @route GET api/v1/developers
