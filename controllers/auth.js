@@ -40,6 +40,14 @@ exports.login = asyncHandler(async (req, res, next) => {
   sendTokenResponse(user, 200, res);
 });
 
+// @desc  Get Current Logged User
+// @route GET api/v1/auth/me
+// @access Public
+exports.getMe = asyncHandler(async (req, res, next) => {
+  const currentUser = req.user;
+  res.status(200).json({ success: true, data: currentUser });
+});
+
 const sendTokenResponse = (user, statusCode, res) => {
   // Create Token
   const token = user.getSignedJwtToken();
