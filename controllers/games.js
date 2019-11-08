@@ -30,6 +30,9 @@ exports.getGame = asyncHandler(async (req, res, next) => {
 // @route POST api/v1/games
 // @access Private
 exports.addGame = asyncHandler(async (req, res, next) => {
+  // LoggedIn User is the user creating the review
+  req.body.user = req.user.id;
+
   const game = await Game.create(req.body);
   res.status(201).json({ success: true, data: game });
 });
@@ -38,25 +41,44 @@ exports.addGame = asyncHandler(async (req, res, next) => {
 // @route PUT api/v1/games/:id
 // @access Private
 exports.updateGame = asyncHandler(async (req, res, next) => {
-  const game = await Game.findByIdAndUpdate(req.params.id, req.body, {
+  const game = await Game.findById(req.params.id);
+  if (!game) {
+    return next(new ErrorResponse('Resource Not Found', 404));
+  }
+
+  // Verify if the game belongs to the logged User
+  if (game.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse('This user is not authorized to update this game', 403)
+    );
+  }
+
+  const updatedGame = await Game.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
   });
 
-  if (!game) {
-    return next(new ErrorResponse('Resource Not Found', 404));
-  }
-  res.status(200).json({ success: true, data: game });
+  res.status(200).json({ success: true, data: updatedGame });
 });
 
 // @desc  Delete a Game
 // @route DELETE api/v1/games/:id
 // @access Private
 exports.deleteGame = asyncHandler(async (req, res, next) => {
-  const game = await Game.findByIdAndDelete(req.params.id);
+  const game = await Game.findById(req.params.id);
+
   if (!game) {
     return next(new ErrorResponse('Resource Not Found', 404));
   }
+
+  // Verify if the game belongs to the logged User
+  if (game.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse('This user is not authorized to delete this games', 403)
+    );
+  }
+
+  await game.remove();
   res.status(200).json({ success: true, data: {} });
 });
 
@@ -68,6 +90,16 @@ exports.gamePhotoUpload = asyncHandler(async (req, res, next) => {
 
   if (!game) {
     return next(new ErrorResponse('Resource Not Found', 404));
+  }
+
+  // Verify if the game belongs to the logged User
+  if (game.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse(
+        'This user is not authorized to add a photo to this game',
+        403
+      )
+    );
   }
 
   if (!req.files) {

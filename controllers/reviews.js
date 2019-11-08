@@ -21,7 +21,7 @@ exports.getReviews = asyncHandler(async (req, res, next) => {
 // @access Public
 exports.addReview = asyncHandler(async (req, res, next) => {
   // LoggedIn User is the user creating the review
-  req.body.user = req.user._id;
+  req.body.user = req.user.id;
   const review = await Review.create(req.body);
   res.status(201).json({ success: true, data: review });
 });

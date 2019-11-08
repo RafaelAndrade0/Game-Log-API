@@ -41,6 +41,8 @@ router
   .put(protect, authorize('publisher', 'admin'), updateGame)
   .delete(protect, authorize('publisher', 'admin'), deleteGame);
 
-router.route('/:id/photo').put(gamePhotoUpload);
+router
+  .route('/:id/photo')
+  .put(protect, authorize('publisher', 'admin'), gamePhotoUpload);
 
 module.exports = router;
