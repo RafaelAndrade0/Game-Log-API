@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const connectDb = require('./config/db');
 const colors = require('colors');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/errorHandler');
 const fileUpload = require('express-fileupload');
 const path = require('path');
@@ -17,6 +18,9 @@ connectDb();
 
 // Body Parser (acess to req.body)
 app.use(express.json());
+
+// Cookie Parser to populate (req.cookies)
+app.use(cookieParser());
 
 // Route Files
 const games = require('./routes/games');
