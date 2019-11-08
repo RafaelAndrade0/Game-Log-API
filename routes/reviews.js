@@ -6,7 +6,7 @@ const Review = require('../models/Review');
 
 // Midlewares
 const filteredResults = require('../middleware/filteredResults');
-const { protect } = require('../middleware/auth');
+const { protect, authorize } = require('../middleware/auth');
 
 // Load Controllers
 const {
@@ -27,11 +27,11 @@ router
     ]),
     getReviews
   )
-  .post(addReview);
+  .post(protect, authorize('user', 'admin'), addReview);
 
 router
   .route('/:id')
   .get(getReview)
-  .delete(protect, deleteReview);
+  .delete(protect, authorize('user', 'admin'), deleteReview);
 
 module.exports = router;
