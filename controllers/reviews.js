@@ -20,6 +20,8 @@ exports.getReviews = asyncHandler(async (req, res, next) => {
 // @route POST api/v1/review
 // @access Public
 exports.addReview = asyncHandler(async (req, res, next) => {
+  // LoggedIn User is the user creating the review
+  req.body.user = req.user._id;
   const review = await Review.create(req.body);
   res.status(201).json({ success: true, data: review });
 });
@@ -45,6 +47,16 @@ exports.deleteReview = asyncHandler(async (req, res, next) => {
 
   if (!review) {
     return next(new ErrorResponse('Resource Not Found', 404));
+  }
+
+  // Verify if the review belongs to the logged User
+  if (review.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse(
+        'This user is not authorized to delete this review',
+        403
+      )
+    );
   }
 
   await review.remove();
