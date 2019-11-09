@@ -1,6 +1,7 @@
 const asyncHandler = require('../middleware/asyncHandler');
 const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
+const sendEmail = require('../utils/sendEmail');
 
 // @desc  Register User
 // @route GET api/v1/auth/register
@@ -58,6 +59,24 @@ exports.logout = asyncHandler(async (req, res, next) => {
 exports.getMe = asyncHandler(async (req, res, next) => {
   const currentUser = req.user;
   res.status(200).json({ success: true, data: currentUser });
+});
+
+// @desc  Forgot Password
+// @route POST api/v1/auth/forgotpassword
+// @access Public
+exports.forgotPassword = asyncHandler(async (req, res, next) => {
+  const user = await User.findOne({ email: req.body.email });
+
+  if (!user) {
+    return next(new ErrorResponse('User not found', 404));
+  }
+
+  // Get Reset Token
+  const resetToken = user.getResetPasswordToken();
+
+  console.log(resetToken);
+
+  res.status(200).json({ success: true, data: user });
 });
 
 const sendTokenResponse = (user, statusCode, res) => {
