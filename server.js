@@ -7,6 +7,11 @@ const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/errorHandler');
 const fileUpload = require('express-fileupload');
 const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const hpp = require('hpp');
+const rateLimit = require('express-rate-limit');
+const cors = require('cors');
 const path = require('path');
 
 const app = express();
@@ -22,6 +27,15 @@ app.use(express.json());
 
 // Sanitize Data
 app.use(mongoSanitize());
+
+// Using Helmet to add some security
+app.use(helmet());
+
+// Middleware to sanitize user input (like <script></script)
+app.use(xss());
+
+// Middleware to protect against HTTP Parameter Pollution attacks
+app.use(hpp());
 
 // Cookie Parser to populate (req.cookies)
 app.use(cookieParser());
@@ -41,6 +55,16 @@ app.use(
     debug: true
   })
 );
+
+// Rate Limiting
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 mins
+  max: 100
+});
+app.use(limiter);
+
+// Enable CORS
+app.use(cors());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
