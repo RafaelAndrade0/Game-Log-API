@@ -3,7 +3,7 @@ const querystring = require('querystring');
 const filteredResults = (Model, populate) => async (req, res, next) => {
   let query;
   let page = parseInt(req.query.page, 10) || 1;
-  let limit = parseInt(req.query.limit, 10) || 5;
+  let limit = parseInt(req.query.limit, 10) || 6;
 
   const reqQuery = { ...req.query };
 
@@ -49,14 +49,16 @@ const filteredResults = (Model, populate) => async (req, res, next) => {
   if (page - 1 > 0 && games.length > 0) {
     const query = { ...req.query };
     query.page = page - 1;
-    pagination.prevPage = `${req.baseUrl}?${querystring.stringify(query)}`;
+    // pagination.prevPage = `${req.baseUrl}?${querystring.stringify(query)}`;
+    pagination.prevPage = page - 1;
   }
 
   // Next Page
   if (page * limit < (await Model.countDocuments())) {
     const query = { ...req.query };
     query.page = page + 1;
-    pagination.nextPage = `${req.baseUrl}?${querystring.stringify(query)}`;
+    // pagination.nextPage = `${req.baseUrl}?${querystring.stringify(query)}`;
+    pagination.nextPage = page + 1;
   }
 
   // Actual Page
